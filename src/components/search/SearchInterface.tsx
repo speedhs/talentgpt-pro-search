@@ -19,6 +19,7 @@ import {
   ChevronUp
 } from 'lucide-react';
 import { useAppStore } from '@/lib/store';
+import { SearchResults } from './SearchResults';
 
 const popularQueries = [
   "Senior AI/ML engineers with Python and TensorFlow",
@@ -32,6 +33,7 @@ export const SearchInterface = () => {
   const [query, setQuery] = useState('');
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [showAdvancedFilters, setShowAdvancedFilters] = useState(false);
+  const [showResults, setShowResults] = useState(false);
   const { searchQueries, addSearchQuery, toggleSaveQuery, deleteQuery } = useAppStore();
 
   const handleSearch = (searchQuery?: string) => {
@@ -40,6 +42,7 @@ export const SearchInterface = () => {
       addSearchQuery(finalQuery);
       setQuery('');
       setShowSuggestions(false);
+      setShowResults(true);
     }
   };
 
@@ -48,6 +51,11 @@ export const SearchInterface = () => {
       handleSearch();
     }
   };
+
+  // Show search results if we have performed a search
+  if (showResults) {
+    return <SearchResults />;
+  }
 
   return (
     <div className="flex-1 p-6 space-y-6">
@@ -209,7 +217,7 @@ export const SearchInterface = () => {
                 <Card className="bg-slate-800 border-slate-600 hover:border-slate-500 transition-colors">
                   <CardContent className="p-4">
                     <div className="flex items-center justify-between">
-                      <div className="flex-1">
+                      <div className="flex-1 cursor-pointer" onClick={() => handleSearch(search.query)}>
                         <p className="text-white mb-1">{search.query}</p>
                         <p className="text-sm text-slate-400">
                           {search.timestamp.toLocaleDateString()} at {search.timestamp.toLocaleTimeString()}
