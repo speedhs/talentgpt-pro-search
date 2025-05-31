@@ -4,22 +4,39 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { useAppStore } from '@/lib/store';
-import { 
-  Search, 
-  Layout, 
-  Users, 
-  BarChart3, 
-  Settings,
-  Bookmark,
-  Clock
-} from 'lucide-react';
+import { Search, Layout, Users, BarChart3, Settings, Bookmark, Clock, MessageCircle } from 'lucide-react';
 
 const menuItems = [
-  { id: 'dashboard', label: 'Dashboard', icon: Layout },
-  { id: 'search', label: 'Search', icon: Search },
-  { id: 'candidates', label: 'Candidates', icon: Users },
-  { id: 'analytics', label: 'Analytics', icon: BarChart3 },
-  { id: 'settings', label: 'Settings', icon: Settings },
+  {
+    id: 'dashboard',
+    label: 'Dashboard',
+    icon: Layout
+  },
+  {
+    id: 'search',
+    label: 'Search',
+    icon: Search
+  },
+  {
+    id: 'messaging',
+    label: 'Messaging',
+    icon: MessageCircle
+  },
+  {
+    id: 'candidates',
+    label: 'Candidates',
+    icon: Users
+  },
+  {
+    id: 'analytics',
+    label: 'Analytics',
+    icon: BarChart3
+  },
+  {
+    id: 'settings',
+    label: 'Settings',
+    icon: Settings
+  }
 ];
 
 export const Sidebar = () => {
@@ -35,7 +52,7 @@ export const Sidebar = () => {
         {menuItems.map((item) => {
           const Icon = item.icon;
           const isActive = currentTab === item.id;
-          
+
           return (
             <motion.div
               key={item.id}
@@ -59,6 +76,7 @@ export const Sidebar = () => {
         })}
       </nav>
 
+      {/* Recent Searches Section */}
       {recentSearches.length > 0 && (
         <>
           <Separator className="mx-4 bg-slate-700" />

@@ -4,6 +4,7 @@ import { Sidebar } from './Sidebar';
 import { Header } from './Header';
 import { SearchInterface } from '../search/SearchInterface';
 import { Dashboard } from '../dashboard/Dashboard';
+import { MessagingInterface } from '../messaging/MessagingInterface';
 import { useAppStore } from '@/lib/store';
 
 export const MainLayout = () => {
@@ -15,6 +16,8 @@ export const MainLayout = () => {
         return <Dashboard />;
       case 'search':
         return <SearchInterface />;
+      case 'messaging':
+        return <MessagingInterface />;
       case 'candidates':
         return (
           <div className="flex-1 p-6">
