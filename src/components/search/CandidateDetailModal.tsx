@@ -12,7 +12,7 @@ import {
   DollarSign, 
   Mail, 
   Phone, 
-  LinkedIn,
+  Linkedin,
   Github, 
   ExternalLink,
   MessageCircle,
